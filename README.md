@@ -18,3 +18,11 @@ Please implement delivery as an standalone service (just like the random joke se
 ![](Micropos.svg)
 
 Consider the advantage by doing so and write it down in your readme file.
+
+
+
+------
+
+在gateway中使用IntergrationFlow创建inGate与outGate两模块通过自建channel进行通信。inGate将网关响应的http请求放入channel中，outGate再从中提取消息转发请求，同时为了传递路径信息将参数放入消息的payload中以供提取构造uri访问。
+
+ 使用异步相应的消息驱动spring-integration框架，使用时可以自由添加自定义操作，提供了更好的系统可扩展性、可靠性；组件间的低耦合性得到提升， 通过组装调配组件可以完成更复杂的功能。
