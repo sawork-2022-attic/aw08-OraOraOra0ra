@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 public class HttpInboundGateway {
     @Bean
     public IntegrationFlow inGate() {
-        return IntegrationFlows.from(WebFlux.inboundGateway("/api/delivery/byid/{id}")
+        return IntegrationFlows.from(WebFlux.inboundGateway("/api/delivery/byorder/{orderId}")
                         .requestMapping(m -> m.methods(HttpMethod.GET))
-                        .payloadExpression("#pathVariables.id"))
+                        .payloadExpression("#pathVariables.orderId"))
                 .headerFilter("accept-encoding", false)
                 .channel("pos_channel")
                 .get();

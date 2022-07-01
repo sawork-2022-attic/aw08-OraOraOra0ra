@@ -14,7 +14,7 @@ public class HttpOutboundGateway {
     public IntegrationFlow outGate() {
         return IntegrationFlows.from("pos_channel")
                 .handle(WebFlux.outboundGateway(message ->
-                                UriComponentsBuilder.fromUriString("http://localhost:8088/delivery")
+                                UriComponentsBuilder.fromUriString("http://localhost:8088/api/delivery/byorder/{orderId}")
                                         .buildAndExpand(message.getPayload())
                                         .toUri())
                         .httpMethod(HttpMethod.GET)
